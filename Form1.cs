@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace FileWachter
+namespace FileWatcher
 {
     public partial class Form1 : Form
     {
@@ -38,9 +38,8 @@ namespace FileWachter
                 try
                 {
                     foreach (object add_extension in listBox2.Items)
-                    {
-                        string text = Convert.ToString(add_extension);
-                        streamWriter.WriteLine(add_extension);
+                    {                        
+                        streamWriter.WriteLine(add_extension.ToString());
                     }
                 }
                 catch (Exception ex)
@@ -249,7 +248,11 @@ namespace FileWachter
                     save_txt.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                     save_txt.Filter = "TEXT (*.txt)|*.txt";
                     save_txt.ShowDialog();
-                    File.WriteAllText(save_txt.FileName, listBox1.Text);
+                    using (StreamWriter writer = new StreamWriter(save_txt.FileName))
+                        foreach (object saver in listBox1.Items)
+                        {    
+                            writer.Write(saver.ToString());
+                        }                  
                     MessageBox.Show("Done saved It", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -311,6 +314,19 @@ namespace FileWachter
             {
                 MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void Form1_Move(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                Hide();
+                notifyIcon1.ShowBalloonTip(1000, "Files Watcher", "Has Been Minimized", ToolTipIcon.Info);
+            }
+        }
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace FileWachter
+namespace FileWatcher
 {
     partial class Form1
     {
@@ -61,6 +61,7 @@ namespace FileWachter
             this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteFileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.copyPathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -84,7 +85,7 @@ namespace FileWachter
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(58, 79);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(440, 173);
+            this.listBox1.Size = new System.Drawing.Size(446, 225);
             this.listBox1.TabIndex = 0;
             // 
             // listBox2
@@ -94,7 +95,7 @@ namespace FileWachter
             this.listBox2.FormattingEnabled = true;
             this.listBox2.Location = new System.Drawing.Point(5, 118);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(47, 134);
+            this.listBox2.Size = new System.Drawing.Size(47, 186);
             this.listBox2.TabIndex = 2;
             // 
             // textBox1
@@ -103,7 +104,7 @@ namespace FileWachter
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(108, 42);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(390, 20);
+            this.textBox1.Size = new System.Drawing.Size(396, 20);
             this.textBox1.TabIndex = 5;
             // 
             // textBox2
@@ -157,7 +158,7 @@ namespace FileWachter
             this.deleteFileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(505, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(511, 24);
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -305,13 +306,20 @@ namespace FileWachter
             this.copyPathToolStripMenuItem.Text = "Copy Path";
             this.copyPathToolStripMenuItem.Click += new System.EventHandler(this.copyPathToolStripMenuItem_Click);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.ClientSize = new System.Drawing.Size(505, 257);
+            this.ClientSize = new System.Drawing.Size(511, 310);
             this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -329,6 +337,7 @@ namespace FileWachter
             this.Name = "Form1";
             this.Text = "Files Watcher";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Move += new System.EventHandler(this.Form1_Move);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
@@ -367,6 +376,7 @@ namespace FileWachter
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem StartToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 
